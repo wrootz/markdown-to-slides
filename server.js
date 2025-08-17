@@ -99,7 +99,7 @@ app.post('/convert', async (req, res) => {
     // 1. Cria uma nova apresentação vazia no Google Slides
     const presentation = await slidesApi.presentations.create({
       requestBody: {
-        title: 'Apresentação Gerada do Markdown', // Título padrão para a nova apresentação
+        title: 'Generathor - MD2Slide', // Título padrão para a nova apresentação
       },
     });
     const presentationId = presentation.data.presentationId; // ID da apresentação recém-criada
@@ -111,7 +111,7 @@ app.post('/convert', async (req, res) => {
     for (const slideMd of slidesContent) {
       // Analisa o conteúdo Markdown do slide em uma árvore de tokens (AST)
       const tokens = markdownit.parse(slideMd, {});
-      let slideTitle = ''; // Variável para armazenar o título do slide
+      let slideTitle = 'Generathor MD2Slide'; // Variável para armazenar o título do slide
       let slideBodyElements = []; // Array para armazenar o conteúdo do corpo do slide
 
       // Itera sobre os tokens para extrair título e corpo do slide
@@ -151,7 +151,7 @@ app.post('/convert', async (req, res) => {
           insertionIndex: slideCount, // Posição do slide na apresentação
           // CORREÇÃO: Usar slideLayoutReference em vez de slideProperties
           slideLayoutReference: {
-            predefinedLayout: 'TITLE_AND_BODY' // Usa o layout predefinido TITLE_AND_BODY
+            predefinedLayout: 'BLANK' // Usa o layout predefinido TITLE_AND_BODY
           }
         }
       });
@@ -188,7 +188,8 @@ app.post('/convert', async (req, res) => {
       requests.push({
         insertText: {
           objectId: titleShapeObjectId,
-          text: slideTitle || 'Slide ' + (slideCount + 1)
+          // text: slideTitle || 'Slide ' + (slideCount + 1)
+          text: slideTitle || '' + (slideCount + 1)
         }
       });
       // Aplica estilo ao texto do título (negrito, tamanho da fonte)
