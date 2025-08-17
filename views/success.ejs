@@ -1,0 +1,20 @@
+<!-- views/success.ejs -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sucesso!</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <img src="/images/logo.png" alt="Logo do SPA" class="logo">
+    <h1>Conversão Concluída!</h1>
+    <p>Sua apresentação foi criada com sucesso no Google Slides.</p>
+    <!-- Link para a apresentação recém-criada, abre em uma nova aba -->
+    <a href="<%= presentationUrl %>" target="_blank" class="button-link">Acessar Apresentação</a>
+    <p style="margin-top: 20px;"><a href="/" class="button-link" style="background: #6c757d;">Criar Nova Apresentação</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown para Slides</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Logo do SPA - Você pode substituir esta imagem pelo seu próprio logo. -->
+    <img src="/images/logo.png" alt="Logo do SPA" class="logo">
+    <h1>Converta Markdown em Slides</h1>
+    <p>Insira seu texto Markdown abaixo. Use <code class="code-separator">---</code> em uma linha separada para indicar uma nova divisão de slide.</p>
+
+    <!-- Exibe o botão de login se o usuário não estiver autenticado -->
+    <% if (!isAuthenticated) { %>
+      <a href="/auth/google" class="login-button">Login com Google para Gerar Slides</a>
+      <p class="warning-text">Você precisa fazer login com sua conta Google para que a aplicação possa criar a apresentação no seu Google Drive.</p>
+    <% } %>
+
+    <!-- Formulário para envio do texto Markdown -->
+    <form id="convertForm" action="/convert" method="POST">
+      <textarea name="markdownText" id="markdownText" placeholder="Exemplo:
+# Título do Slide 1
+Este é o conteúdo do primeiro slide.
+
+---
+
+## Título do Slide 2
+- Item 1
+- Item 2
+
+---
+
+### Conclusão
+Obrigado!" required></textarea>
+      <button type="submit" id="convertButton" <% if (!isAuthenticated) { %>disabled<% } %>>
+        <span id="buttonText">Converter para Slides</span>
+        <div class="preloader" id="preloader"></div>
+      </button>
+    </form>
+  </div>
+  <script>
+    // Seleciona os elementos do DOM
+    const form = document.getElementById('convertForm');
+    const button = document.getElementById('convertButton');
+    const buttonText = document.getElementById('buttonText');
+    const preloader = document.getElementById('preloader');
+
+    // Adiciona um listener para o evento de submit do formulário
+    form.addEventListener('submit', (event) => {
+      // Se o botão estiver desabilitado (usuário não autenticado), impede o envio do formulário
+      if (button.disabled) {
+        event.preventDefault();
+        return;
+      }
+      // Desabilita o botão para evitar múltiplos cliques
+      button.disabled = true;
+      // Esconde o texto do botão
+      buttonText.style.display = 'none';
+      // Mostra o preloader
+      preloader.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+/* public/css/style.css */
+
+/* Estilos globais para o corpo da página */
+body {
+    font-family: 'Inter', sans-serif; /* Fonte Inter, com fallback para fontes sans-serif */
+    background-color: #f0f2f5; /* Cor de fundo suave */
+    display: flex; /* Usa flexbox para centralizar o container */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: flex-start; /* Alinha no topo para melhor visualização do conteúdo, permitindo rolagem */
+    min-height: 100vh; /* Altura mínima da viewport */
+    margin: 0; /* Remove margens padrão do navegador */
+    padding: 20px; /* Preenchimento em torno do container */
+    box-sizing: border-box; /* Garante que padding e border estão incluídos na largura/altura */
+}
+
+/* Estilos para o container principal da aplicação */
+.container {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 30px; /* Preenchimento interno */
+    border-radius: 15px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil para profundidade */
+    text-align: center; /* Centraliza o texto dentro do container */
+    width: 100%; /* Ocupa 100% da largura disponível */
+    max-width: 800px; /* Limita a largura máxima para melhor leitura */
+    box-sizing: border-box;
+}
+
+/* Estilos para o logo */
+.logo {
+    width: 100px; /* Largura fixa */
+    height: 100px; /* Altura fixa */
+    margin-bottom: 20px; /* Margem inferior */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    background-color: #e0e0e0; /* Cor de fundo como placeholder se a imagem não carregar */
+    display: block; /* Garante que a imagem ocupe sua própria linha */
+    margin-left: auto; /* Centraliza a imagem horizontalmente */
+    margin-right: auto;
+}
+
+/* Estilos para títulos H1 */
+h1 {
+    color: #333; /* Cor escura para o texto */
+    margin-bottom: 15px; /* Margem inferior */
+    font-size: 2em; /* Tamanho da fonte maior */
+}
+
+/* Estilos para parágrafos */
+p {
+    color: #555; /* Cor cinza para o texto */
+    margin-bottom: 25px; /* Margem inferior */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor legibilidade */
+}
+
+/* Estilos para a área de texto (textarea) */
+textarea {
+    width: 100%; /* Ocupa 100% da largura */
+    padding: 15px; /* Preenchimento interno */
+    margin-bottom: 25px; /* Margem inferior */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 10px; /* Cantos arredondados */
+    font-size: 1em; /* Tamanho da fonte */
+    min-height: 300px; /* Altura mínima */
+    box-sizing: border-box;
+    resize: vertical; /* Permite que o usuário redimensione verticalmente */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra interna para um efeito sutil */
+}
+
+/* Estilos para botões e links que agem como botões */
+button, .button-link, .login-button {
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradiente de azul */
+    color: white; /* Cor do texto branca */
+    padding: 15px 30px; /* Preenchimento */
+    border: none; /* Sem borda */
+    border-radius: 10px; /* Cantos arredondados */
+    font-size: 1.1em; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de ponteiro */
+    transition: all 0.3s ease; /* Transição suave para efeitos de hover */
+    display: inline-flex; /* Permite alinhar itens internos (texto e preloader) */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 10px; /* Espaço entre itens */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Sombra para o botão */
+    text-decoration: none; /* Remove sublinhado de links */
+}
+
+/* Efeito hover para botões e links */
+button:hover, .button-link:hover, .login-button:hover {
+    background: linear-gradient(135deg, #0056b3, #003f80); /* Gradiente mais escuro no hover */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Sombra maior no hover */
+    transform: translateY(-2px); /* Eleva o botão ligeiramente */
+}
+
+/* Estilo para botões desabilitados */
+button:disabled {
+    background: #cccccc; /* Cor cinza */
+    cursor: not-allowed; /* Cursor de "não permitido" */
+    box-shadow: none; /* Sem sombra */
+    transform: none; /* Sem elevação */
+}
+
+/* Estilo para o preloader (animação de carregamento) */
+.preloader {
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Borda transparente */
+    border-top: 4px solid #fff; /* Borda superior branca */
+    border-radius: 50%; /* Circular */
+    width: 20px; /* Largura */
+    height: 20px; /* Altura */
+    animation: spin 1s linear infinite; /* Animação de giro */
+    display: none; /* Escondido por padrão */
+}
+
+/* Animação de giro para o preloader */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilo para textos de aviso */
+.warning-text {
+  color: #d9534f; /* Vermelho claro para avisos */
+  font-size: 0.9em; /* Fonte ligeiramente menor */
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f2dede; /* Fundo vermelho claro */
+  border-left: 5px solid #d9534f; /* Borda esquerda colorida */
+  border-radius: 5px; /* Cantos arredondados */
+}
+
+/* Estilo para o separador de código no texto */
+.code-separator {
+  background-color: #e9ecef;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #c7254e;
+}
+
+/* --- Responsividade --- */
+
+/* Para telas menores que 768px (tablets e smartphones) */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduz o preenchimento do container */
+    }
+    h1 {
+        font-size: 1.8em; /* Reduz o tamanho do título H1 */
+    }
+    button, .button-link, .login-button {
+        padding: 12px 20px; /* Reduz o preenchimento dos botões */
+        font-size: 1em; /* Reduz o tamanho da fonte dos botões */
+    }
+}
+
+/* Para telas menores que 480px (smartphones) */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px; /* Reduz ainda mais o preenchimento */
+    }
+    h1 {
+        font-size: 1.5em; /* Reduz ainda mais o tamanho do título H1 */
+    }
+    textarea {
+        min-height: 200px; /* Reduz a altura mínima da área de texto */
+    }
+}
